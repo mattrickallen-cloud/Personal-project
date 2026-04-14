@@ -20,23 +20,23 @@ def haversine(lon1, lat1, lon2, lat2):
     c = 2 * np.arcsin(np.sqrt(a))
     return R * c
 
-"""config_species = {
-    "Chordata":
-    {"limit": 500,
-    "min_points": 5},
+#config_species = {
+ #   "Chordata":
+  #  {"limit": 500,
+   # "min_points": 5},
 
-    "Arthropoda":
-    {"limit": 2000,
-    "min_points": 1},
+    #"Arthropoda":
+    #{"limit": 2000,
+    #"min_points": 1},
 
-    "Annelida":
-    {"limit": 1500,
-    "min_points": 30},       
+    #"Annelida":
+    #{"limit": 1500,
+    #"min_points": 30},       
     
-    "Plantae":
-    {"limit":500,
-     "min_points":5}
-    }"""
+    #"Plantae":
+    #{"limit":500,
+    # "min_points":5}
+    #}
 
 chosen_species_name = st.text_input("Enter the scientific name of chosen species (ex: Lynx pardinus).")
 chosen_species = species.name_backbone(scientificName=chosen_species_name)
