@@ -8,6 +8,7 @@ import folium
 import streamlit as st
 from streamlit_folium import st_folium
 import branca.colormap as cm
+import matplotlib.colors as mcolors
 
 #config_species = {
  #   "Chordata":
