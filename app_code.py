@@ -38,11 +38,11 @@ def haversine(lon1, lat1, lon2, lat2):
      "min_points":5}
     }"""
 
-chosen_species_name = input("Enter the scientific name of chosen species (ex: Lynx pardinus).")
+chosen_species_name = st.text_input("Enter the scientific name of chosen species (ex: Lynx pardinus).")
 chosen_species = species.name_backbone(scientificName=chosen_species_name)
 taxonkey = chosen_species["usage"]["key"]
 #phylum = chosen_species["classification"][1]["name"]
-country_names = input("Enter the chosen country of study (ex: Spain).")
+country_names = st.text_input("Enter the chosen country of study (ex: Spain).")
 country_list = [country_names]
 results = []
 country = pycountry.countries.get(name=country_names).alpha_2
@@ -280,7 +280,7 @@ if len(mean_coord["years"]) > 2:
     
     st.pyplot(fig3)
 
-    year_predict = int(input("For which coming year do you want to predict the evolution of this population ?"))
+    year_predict = int(st.text_input("For which coming year do you want to predict the evolution of this population ?"))
     y_lat_pred = c * year_predict + d
     y_long_pred = a * year_predict + b
 
