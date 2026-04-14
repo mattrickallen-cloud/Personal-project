@@ -9,13 +9,6 @@ import streamlit as st
 from streamlit_folium import st_folium
 import branca.colormap as cm
 
-def get_color(year, y_min, y_max):
-
-    norm = (year - y_min) / (y_max - y_min)
-    rgba = cmap_plt(norm)
-  
-    return mcolors.to_hex(rgba)
-
 #config_species = {
  #   "Chordata":
   #  {"limit": 500,
@@ -110,13 +103,19 @@ if run_button:
                       )
 
         cmap_plt = plt.get_cmap('YlOrRd')
+        colors_hex = [mcolors.to_hex(cmap_plt(i)) for i in np.linspace(0, 1, 256)]
+        colormap = cm.LinearColormap(
+                                    colors=colors_hex,
+                                    vmin=df['year'].min(),
+                                    vmax=df['year'].max(),
+                                    caption=f"Occurrence Years ({cmap_name})"
+                                    )
         cmap_plt.add_to(m)
-        cmap_plt.caption = 'Occurence years'
         
         fg_obs = folium.FeatureGroup(name="Individual occurences").add_to(m)
         for _, row in df.iterrows():
         
-            point_color = get_color(row['year'], year_min, year_max)
+            point_color = colormap(row['year'])
             
             folium.CircleMarker(
                                 location=[row["decimalLatitude"], row["decimalLongitude"]],
