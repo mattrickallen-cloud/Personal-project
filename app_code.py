@@ -236,11 +236,11 @@ if run_button:
             y_lat_pred = c * year_predict + d
             y_long_pred = a * year_predict + b
 
-           folium.Marker(
-                        location=[y_lat_pred, y_long_pred],
-                        icon=folium.Icon(color="green", icon="star"),
-                        popup=f"Position prédite en {year_predict}"
-                        ).add_to(m)
+            folium.Marker(
+                         location=[y_lat_pred, y_long_pred],
+                         icon=folium.Icon(color="green", icon="star"),
+                         popup=f"Position prédite en {year_predict}"
+                         ).add_to(m)
         
             plt.legend()
         
