@@ -9,15 +9,6 @@ import streamlit as st
 from streamlit_folium import st_folium
 import branca.colormap as cm
 
-def haversine(lon1, lat1, lon2, lat2):
-    R = 6371
-    lon1, lat1, lon2, lat2 = np.radians([lon1, lat1, lon2, lat2])
-    dlon = lon2 - lon1
-    dlat = lat2 - lat1
-    a = np.sin(dlat/2)**2 + np.cos(lat1) * np.cos(lat2) * np.sin(dlon/2)**2
-    c = 2 * np.arcsin(np.sqrt(a))
-    return R * c
-
 #config_species = {
  #   "Chordata":
   #  {"limit": 500,
@@ -199,20 +190,6 @@ if run_button:
         plt.legend()
         
         st.pyplot(fig4)
-        
-        if len(mean_coord["years"]) > 1:
-        
-            lon_debut = mean_coord["longitude_means"][0]
-            lat_debut = mean_coord["latitude_means"][0]
-            lon_fin = mean_coord["longitude_means"][-1]
-            lat_fin = mean_coord["latitude_means"][-1]
-        
-            distance_km = haversine(lon_debut, lat_debut, lon_fin, lat_fin)
-            time = mean_coord["years"][-1] - mean_coord["years"][0]
-            speed = distance_km/time
-        
-            print(f"{chosen_species_name} has travelled {distance_km} km")
-            print(f"Movement speed : {speed} km per year.")
         
         if len(mean_coord["years"]) > 2:
         
