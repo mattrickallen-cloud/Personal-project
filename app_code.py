@@ -232,7 +232,7 @@ if run_button:
             folium.Marker(
                          location=[y_lat_pred, y_long_pred],
                          icon=folium.Icon(color="green", icon="star"),
-                         popup=f"Predicted position in {year_predict}"
+                         popup=f"Predicted mean position in {year_predict}"
                          ).add_to(m)
         
             plt.legend()
