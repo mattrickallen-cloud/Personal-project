@@ -109,7 +109,7 @@ if run_button:
                                     colors=colors_hex,
                                     vmin=df['year'].min(),
                                     vmax=df['year'].max(),
-                                    caption=f"Occurrence Years ({cmap_name})"
+                                    caption="Occurrence Years"
                                     )
         cmap_plt.add_to(m)
         
