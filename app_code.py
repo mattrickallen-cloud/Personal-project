@@ -189,7 +189,7 @@ if run_button:
         if len(mean_coord["years"]) > 2:
         
             y_raw = np.array(mean_coord["years"])#*percent_year
-            y = [value*percent_year for value in y_raw]
+            y = np.array(value*percent_year for value in y_raw)
             lat = np.array(mean_coord["latitude_means"])
             long = np.array(mean_coord["longitude_means"])
             
