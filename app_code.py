@@ -111,7 +111,7 @@ if run_button:
                                     vmax=df['year'].max(),
                                     caption="Occurrence Years"
                                     )
-        cmap_plt.add_to(m)
+        colormap.add_to(m)
         
         fg_obs = folium.FeatureGroup(name="Individual occurences").add_to(m)
         for _, row in df.iterrows():
