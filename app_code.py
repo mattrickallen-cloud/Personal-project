@@ -111,7 +111,8 @@ for _, row in df.iterrows():
                             color="black",
                             weight=0.5,
                             fill=True,
-                            fill_opacity=0.6,
+                            fill_color="yellow",
+                            fill_opacity=0.8,
                             tooltip=f"Year : {int(row['year'])}"
                             ).add_to(fg_obs)
 
@@ -120,7 +121,7 @@ for lon, lat, yr in zip(mean_coord["longitude_means"], mean_coord["latitude_mean
     folium.Marker(
                   location=[lat, lon],
                   icon=folium.Icon(color="red", icon="info-sign"),
-                  popup=f"Moyenne en {yr}"
+                  popup=f"Mean position in {yr}"
                  ).add_to(history_group)
 
 fg_traj = folium.FeatureGroup(name="Mean trajectory").add_to(m)
