@@ -177,23 +177,21 @@ if run_button:
                 year_number,
                 color="blue"
                 )
-        percent_max = max(year_number)
-        percent_year = [0]*len(year_number)
-        for index in range(len(year_number)):
-            percent_year[index] = 1 + year_number[index]/percent_max
         
         plt.legend()
         
         st.pyplot(fig4)
-        
+         
         if len(mean_coord["years"]) > 2:
         
-            y_raw = np.array(mean_coord["years"])#*percent_year
-            y = np.array(value*percent_year for value in y_raw)
+            y = np.array(mean_coord["years"])
             lat = np.array(mean_coord["latitude_means"])
             long = np.array(mean_coord["longitude_means"])
+
+            counts = np.array([year_number[yr - year_min] for yr in mean_coord["years"]])
+            weights = counts/np.max(counts)
             
-            c, d = np.polyfit(y, lat, 1)
+            c, d = np.polyfit(y, lat, 1, w=weights)
             correlation_matrix_lat = np.corrcoef(y, lat)
             correlation_xy_lat = correlation_matrix_lat[0, 1]
             r_squared_lat = correlation_xy_lat**2
@@ -211,7 +209,7 @@ if run_button:
             
             st.pyplot(fig2)
             
-            a, b = np.polyfit(y, long, 1)
+            a, b = np.polyfit(y, long, 1, w=weights)
             correlation_matrix_long = np.corrcoef(y, long)
             correlation_xy_long = correlation_matrix_long[0, 1]
             r_squared_long = correlation_xy_long**2
