@@ -151,7 +151,7 @@ if run_button:
         folium.LayerControl().add_to(m)
         
         if not df.empty:
-            st_folium(m, width=700, height=500)
+            st_folium(m, width=700, height=500,returned_objects=[])
         
         fig2 = plt.figure(2, figsize=(10, 6))
         
@@ -235,10 +235,14 @@ if run_button:
         
             y_lat_pred = c * year_predict + d
             y_long_pred = a * year_predict + b
+
+           folium.Marker(
+                        location=[y_lat_pred, y_long_pred],
+                        icon=folium.Icon(color="green", icon="star"),
+                        popup=f"Position prédite en {year_predict}"
+                        ).add_to(m)
         
             plt.legend()
-            
-            st.pyplot(fig4)
         
         st.success("Simulation done !")
         
