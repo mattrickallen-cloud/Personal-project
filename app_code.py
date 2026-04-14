@@ -97,7 +97,7 @@ if run_button:
             mean_coord["years"].append(year)
         
         colormap = cm.LinearColormap(
-                                    colors=["brown", "red", "orange"],
+                                    colors=["green", "yellow", "red"],
                                     vmin=df['year'].min(),
                                     vmax=df['year'].max()
                                     )
