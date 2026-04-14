@@ -99,7 +99,7 @@ for year in range(year_min,year_max+1):
     mean_coord["years"].append(year)
 
 colormap = cm.LinearColormap(
-                            colors=["brown","red", "orange", "yellow"],
+                            colors=["yellow", "green", "blue"],
                             vmin=df['year'].min(),
                             vmax=df['year'].max()
                             )
