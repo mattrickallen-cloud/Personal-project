@@ -30,7 +30,7 @@ with st.sidebar:
     st.header("Settings")
     chosen_species_name = st.text_input("Enter the scientific name of chosen species (ex: Lynx pardinus).")
     country_names = st.text_input("Enter the chosen country of study (ex: Spain).")
-    year_predict = st.number_input("For which coming year do you want to predict the evolution of this population ?")
+    year_predict = int(st.text_input("For which coming year do you want to predict the evolution of this population ?"))
     run_button = st.button("Run the simulation.")
 
 if run_button:
