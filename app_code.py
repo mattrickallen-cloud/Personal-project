@@ -163,8 +163,6 @@ if run_button:
         
         plt.legend()
         
-        st.pyplot(fig2)
-        
         fig3 = plt.figure(3, figsize=(10, 6))
         
         plt.plot(
@@ -172,8 +170,6 @@ if run_button:
                 mean_coord["longitude_means"],
                 color="green"
                 )
-        
-        st.pyplot(fig3)
         
         fig4 = plt.figure(4)
         
