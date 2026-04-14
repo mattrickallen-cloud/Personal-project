@@ -104,14 +104,14 @@ colormap = cm.LinearColormap(
                             vmax=df['year'].max()
                             )
 
-colormap.add_to(m)
-colormap.caption = 'Occurence years'
-
 m = folium.Map(
         location=[df["decimalLatitude"].mean(), df["decimalLongitude"].mean()],
         zoom_start=6,
         tiles="cartodbpositron"
               )
+
+colormap.add_to(m)
+colormap.caption = 'Occurence years'
 
 fg_obs = folium.FeatureGroup(name="Individual occurences").add_to(m)
 for _, row in df.iterrows():
