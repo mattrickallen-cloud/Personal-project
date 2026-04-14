@@ -7,6 +7,7 @@ import numpy as np
 import folium
 import streamlit as st
 from streamlit_folium import st_folium
+import branca.colormap as cm
 
 def haversine(lon1, lat1, lon2, lat2):
     R = 6371
@@ -97,6 +98,15 @@ for year in range(year_min,year_max+1):
     mean_coord["latitude_means"].append(df_year["decimalLatitude"].mean())
     mean_coord["years"].append(year)
 
+colormap = cm.LinearColormap(
+                            colors=["black", "brown","red", "orange", "yellow"],
+                            vmin=df['year'].min(),
+                            vmax=df['year'].max()
+                            )
+
+colormap.add_to(m)
+colormap.caption = 'Occurence years'
+
 m = folium.Map(
         location=[df["decimalLatitude"].mean(), df["decimalLongitude"].mean()],
         zoom_start=6,
@@ -105,16 +115,19 @@ m = folium.Map(
 
 fg_obs = folium.FeatureGroup(name="Individual occurences").add_to(m)
 for _, row in df.iterrows():
-        folium.CircleMarker(
-                            location=[row["decimalLatitude"], row["decimalLongitude"]],
-                            radius=3,
-                            color="black",
-                            weight=0.5,
-                            fill=True,
-                            fill_color="yellow",
-                            fill_opacity=0.8,
-                            tooltip=f"Year : {int(row['year'])}"
-                            ).add_to(fg_obs)
+
+    point_color = colormap(row['year'])
+    
+    folium.CircleMarker(
+                        location=[row["decimalLatitude"], row["decimalLongitude"]],
+                        radius=3,
+                        color=point_color,
+                        weight=0.5,
+                        fill=True,
+                        fill_color=point_color,
+                        fill_opacity=0.9,
+                        tooltip=f"Year : {int(row['year'])}"
+                        ).add_to(fg_obs)
 
 history_group = folium.FeatureGroup(name="Means").add_to(m)
 for lon, lat, yr in zip(mean_coord["longitude_means"], mean_coord["latitude_means"], mean_coord["years"]):
