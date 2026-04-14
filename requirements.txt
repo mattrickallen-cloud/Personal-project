@@ -6,3 +6,5 @@ matplotlib
 pycountry
 numpy
 streamlit
+folium
+streamlit_folium
