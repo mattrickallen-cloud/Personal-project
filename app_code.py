@@ -1,10 +1,7 @@
 from pygbif import species as species
 from pygbif import occurrences as occ
 import pandas as pd
-#import geopandas as gpd
-#from shapely.geometry import Point
 import matplotlib.pyplot as plt
-#import matplotlib.colors as colors
 import pycountry
 import numpy as np
 import folium
@@ -47,14 +44,6 @@ country_list = [country_names]
 results = []
 country = pycountry.countries.get(name=country_names).alpha_2
 
-#world = gpd.read_file("https://naturalearth.s3.amazonaws.com/110m_cultural/ne_110m_admin_0_countries.zip")
-#country_map = world[world["NAME"].isin(country_list)]
-
-#plt.figure(1, figsize=(12, 8))
-#ax_map = plt.gca()
-
-#cmap = plt.get_cmap("hot")
-
 for offset in range(0, 10000, 500):
 
     occdata = occ.search(
@@ -88,8 +77,6 @@ df = df.reset_index(drop=True)
 year_min = int(df["year"].min())
 year_max = int(df["year"].max())
 
-#actual_norm = colors.Normalize(vmin=year_min, vmax=year_max)
-
 mean_coord = {
             "longitude_means" : [],
             "latitude_means" : [],
@@ -106,49 +93,9 @@ for year in range(year_min,year_max+1):
 
     year_number[year-year_min] = len(df_year)
 
-    #geometry = [Point(xy) for xy in zip(df_year["decimalLongitude"], df_year["decimalLatitude"])]
-
-    #gdf = gpd.GeoDataFrame(df_year,
-       #                 geometry=geometry,
-        #                crs="EPSG:4326"
-         #               )
-
-    #hull = gdf.union_all().convex_hull
-
-    #gpd.GeoSeries([hull]).plot(
-     #                       ax=ax_map,
-    #                        color=cmap(actual_norm(year)),
-     #                       alpha=0.2,
-      #                      edgecolor=cmap(actual_norm(year))
-       #                     )
-
-    #gdf.plot(ax=ax_map, markersize=5,color=cmap(actual_norm(year)))
-
-    #ax_map.scatter(
-      #          df_year["decimalLongitude"].mean(),
-       #         df_year["decimalLatitude"].mean(),
-        #        s=100,
-         #       color=cmap(actual_norm(year)),
-          #      marker="X",
-           #     edgecolors="black"
-            #    )
-
     mean_coord["longitude_means"].append(df_year["decimalLongitude"].mean())
     mean_coord["latitude_means"].append(df_year["decimalLatitude"].mean())
     mean_coord["years"].append(year)
-
-#country_map = country_map.to_crs(gdf.crs)
-
-#sm = plt.cm.ScalarMappable(cmap=cmap, norm=actual_norm)
-#sm.set_array([])
-#cbar = plt.colorbar(sm, ax=ax_map)
-#cbar.set_label("Year")
-#ax_map.set_title(f"Occurrences of {chosen_species_name} in {country_names} ({year_min}-{year_max})")
-#if country_names == "France":
-#   ax_map.set_xlim(-10, 10)
- #   ax_map.set_ylim(40, 60)
-#else:
-#    ax_map.set_xlim(df["decimalLongitude"].min() - 3, df["decimalLongitude"].max() + 3)
 
 m = folium.Map(
         location=[df["decimalLatitude"].mean(), df["decimalLongitude"].mean()],
@@ -168,7 +115,15 @@ for _, row in df.iterrows():
                             tooltip=f"Year : {int(row['year'])}"
                             ).add_to(fg_obs)
 
-fg_traj = folium.FeatureGroup(name="Mean tendancy").add_to(m)
+history_group = folium.FeatureGroup(name="Means").add_to(m)
+for lon, lat, yr in zip(mean_coord["longitude_means"], mean_coord["latitude_means"], mean_coord["years"]):
+    folium.Marker(
+                  location=[lat, lon],
+                  icon=folium.Icon(color="red", icon="info-sign"),
+                  popup=f"Moyenne en {yr}"
+                 ).add_to(history_group)
+
+fg_traj = folium.FeatureGroup(name="Mean trajectory").add_to(m)
 points_trajectoire = list(zip(mean_coord["latitude_means"], mean_coord["longitude_means"]))
     
 folium.PolyLine(points_trajectoire, color="red", weight=2, opacity=0.8).add_to(fg_traj)
@@ -284,15 +239,6 @@ if len(mean_coord["years"]) > 2:
     y_lat_pred = c * year_predict + d
     y_long_pred = a * year_predict + b
 
-    #ax_map.scatter(y_long_pred,
-    #            y_lat_pred,
-    #            s=200,
-    #            color="green",
-    #            marker="X",
-    #            edgecolors="green",
-    #            label="Predicted average distribution"
-    #            )
-    
     plt.legend()
     
     st.pyplot(fig4)
