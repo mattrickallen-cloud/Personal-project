@@ -157,7 +157,8 @@ if run_button:
         plt.plot(
                 mean_coord["years"],
                 mean_coord["latitude_means"],
-                color="red"
+                color="red",
+                label="Mean latitude evolution"
                 )
         
         plt.legend()
@@ -167,7 +168,8 @@ if run_button:
         plt.plot(
                 mean_coord["years"],
                 mean_coord["longitude_means"],
-                color="green"
+                color="green",
+                label="Mean longitude evolution"
                 )
         
         fig4 = plt.figure(4)
@@ -175,7 +177,8 @@ if run_button:
         plt.plot(
                 range(year_min,year_max+1),
                 year_number,
-                color="blue"
+                color="blue",
+                label="Number of occurences through time"
                 )
         
         plt.legend()
@@ -202,7 +205,7 @@ if run_button:
                     y,            
                     c * y + d,
                     "b--",
-                    label=f"R²={r_squared_lat}"
+                    label=f"Linear model, R²={r_squared_lat}"
                     )
             
             plt.legend()
@@ -220,7 +223,7 @@ if run_button:
                     y,
                     a * y + b,
                     "b--",
-                    label=f"R²={r_squared_long}"
+                    label=f"Linear model, R²={r_squared_long}"
                     )
             
             plt.legend()
