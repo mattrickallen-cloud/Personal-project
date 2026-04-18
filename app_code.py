@@ -43,6 +43,7 @@ if run_button:
            taxonkey = chosen_species["usage"]["key"]
         else:
            st.warning("Please enter a valid species name.")
+           st.stop()
         #phylum = chosen_species["classification"][1]["name"]
         country_list = [country_names]
         results = []
