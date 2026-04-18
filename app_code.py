@@ -43,13 +43,18 @@ if run_button:
     
         if not taxonkey:
          
-           st.warning(f"Impossible de trouver l'espèce '{chosen_species_name}'. Vérifie l'orthographe.")
+           st.warning(f"'{chosen_species_name}' no found, check spelling.")
            st.stop()
          
         #phylum = chosen_species["classification"][1]["name"]
         country_list = [country_names]
         results = []
         country = pycountry.countries.get(name=country_names).alpha_2
+     
+        if not country:
+
+           st.error(f""{country" not found") 
+     
         
         for offset in range(0, 10000, 500):
         
