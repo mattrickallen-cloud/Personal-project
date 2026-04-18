@@ -39,7 +39,7 @@ if run_button:
 
     with st.spinner("Collecting GBIF data..."):
         chosen_species = species.name_backbone(scientificName=chosen_species_name)
-      
+        st.json(chosen_species)
         if not chosen_species or chosen_species.get('matchType') == 'NONE':
          
            st.warning("Please enter a valid species name.")
