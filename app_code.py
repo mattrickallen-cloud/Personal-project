@@ -39,11 +39,16 @@ if run_button:
 
     with st.spinner("Collecting GBIF data..."):
         chosen_species = species.name_backbone(scientificName=chosen_species_name)
-        if chosen_species:
-           taxonkey = chosen_species["usage"]["key"]
-        else:
+      
+        if not chosen_species:
+         
            st.warning("Please enter a valid species name.")
            st.stop()
+  
+        else:
+         
+           taxonkey = chosen_species["usage"]["key"]
+         
         #phylum = chosen_species["classification"][1]["name"]
         country_list = [country_names]
         results = []
