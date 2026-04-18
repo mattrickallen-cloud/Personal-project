@@ -26,7 +26,7 @@ def set_bg_from_url(url):
     )
 
 # Exemple avec une image de Lynx hébergée sur le web
-Url = "https://www.alamyimages.fr/photo-image-arbre-de-lumiere-brillant-a-travers-orage-sur-wotons-trone-cape-royal-le-parc-national-du-grand-canyon-arizona-136683302.html?imageid=B792FE95-9D46-49D6-9EBE-B9A5B87193DA&pn=1&searchId=ce8670c3905b97daf893743e078df301&searchtype=0"
+Url = "https://images.pexels.com/photos/34972805/pexels-photo-34972805.jpeg"
 set_bg_from_url(Url)
 
 #config_species = {
