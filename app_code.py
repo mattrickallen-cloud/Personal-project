@@ -39,7 +39,10 @@ if run_button:
 
     with st.spinner("Collecting GBIF data..."):
         chosen_species = species.name_backbone(scientificName=chosen_species_name)
-        taxonkey = chosen_species["usage"]["key"]
+        if chosen_species:
+           taxonkey = chosen_species["usage"]["key"]
+        else:
+           st.warning("Please enter a valid species name.")
         #phylum = chosen_species["classification"][1]["name"]
         country_list = [country_names]
         results = []
@@ -60,7 +63,7 @@ if run_button:
         df = pd.DataFrame(results)
         df = df[["decimalLatitude","decimalLongitude","year"]]
         
-        if df.empty :
+        if df.empty:
             print(f"No or not enough data for {chosen_species_name} in {country_names}.")
             exit()
         
@@ -69,7 +72,7 @@ if run_button:
         df = df[(df["year"] >= 1500) & (df["year"] <= 2026)]
         df = df.groupby('year').filter(lambda x: len(x) >= 5)
         
-        if df.empty :
+        if df.empty:
             print(f"No or not enough data for {chosen_species_name} in {country_names}.")
             exit()
         
