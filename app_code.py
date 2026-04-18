@@ -48,6 +48,7 @@ set_bg_from_url(Url)
     #}
 with st.sidebar:
     st.header("Parameters")
+    st.divider()
     chosen_species_name = st.text_input("Enter the scientific name of chosen species (ex: Lynx pardinus).")
     country_names = st.text_input("Enter the chosen country of study (ex: Spain).")
     year_predict = st.number_input("For which coming year do you want to predict the evolution of this population ?")
@@ -277,8 +278,9 @@ if run_button:
 
             with tab1:
              
-               st.subheader("Interactice map")
-             
+                st.subheader("Interactice map")
+                st.divider()
+                
                if not df.empty:
                 
                   st_folium(m, width=700, height=500, returned_objects=[])
@@ -292,6 +294,7 @@ if run_button:
         with tab2:
          
             st.subheader("Tendancy Analysis")
+            st.divider()
             st.pyplot(fig2)
             st.divider()
             st.pyplot(fig3)
@@ -299,6 +302,7 @@ if run_button:
         with tab3:
                  
             st.subheader("Relevant Information")
+            st.divider()
             st.write(f"Species : {chosen_species_name}")
             st.write(f"Prediction year : {year_predict}")
             st.pyplot(fig4)
