@@ -255,7 +255,7 @@ if run_button:
             lat2_pred = model.predict(y2_poly_lat)
             score_lat2 = r2_score(lat2, lat2_pred)
 
-            if r2_squared_lat >= score_lat2:
+            if r_squared_lat >= score_lat2:
                 
                 lat_pred =  c * y1 + d
 
@@ -288,7 +288,7 @@ if run_button:
             long2_pred = model.predict(y2_poly_long)
             score_long2 = r2_score(long2, long2_pred)
             
-            if r2_squared_long >= score_long2:
+            if r_squared_long >= score_long2:
                 
                 long_pred =  c * y1 + d
                 
