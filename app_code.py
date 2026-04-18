@@ -10,6 +10,8 @@ from streamlit_folium import st_folium
 import branca.colormap as cm
 import matplotlib.colors as mcolors
 
+run_button = false
+
 #config_species = {
  #   "Chordata":
   #  {"limit": 500,
