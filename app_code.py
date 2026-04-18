@@ -290,7 +290,7 @@ if run_button:
             
             if r_squared_long >= score_long2:
                 
-                long_pred =  c * y1 + d
+                long_pred =  a * y1 + b
                 
             else:
                 
