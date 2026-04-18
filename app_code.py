@@ -42,7 +42,7 @@ if run_button:
      
         if not chosen_species or chosen_species["diagnostics"]["matchType"]=="NONE":
          
-           st.warning(f"'{chosen_species_name}' not found, check spelling.")
+           st.error(f"'{chosen_species_name}' not found, check spelling.")
            st.stop()
          
         taxonkey = chosen_species["usage"].get("key")
