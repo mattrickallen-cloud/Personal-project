@@ -8,4 +8,4 @@ numpy
 streamlit
 folium
 streamlit_folium
-sklearn
+scikit-learn
