@@ -10,7 +10,7 @@ from streamlit_folium import st_folium
 import branca.colormap as cm
 import matplotlib.colors as mcolors
 
-tab1, tab2, tab3 = st.tabs(["📊 Carte", "📈 Statistiques", "⚙️ Détails techniques"])
+tab1, tab2, tab3 = st.tabs(["📊 Map", "📈 Analysis", "⚙️ Other"])
 run_button = st.button("Run the simulation.")
 
 #config_species = {
