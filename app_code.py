@@ -26,7 +26,7 @@ def set_bg_from_url(url):
     )
 
 # Exemple avec une image de Lynx hébergée sur le web
-Url = "https://www.photo-paysage.com/albums/userpics/10001/normal_Grand-Canyon---North-Rim---Angel-Point.jpg"
+Url = "https://t4.ftcdn.net/jpg/01/76/92/09/360_F_176920940_UY5WlCbvrymRGs8tLufwrSPR7zRYmYI6.webp"
 set_bg_from_url(Url)
 
 #config_species = {
