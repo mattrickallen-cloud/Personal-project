@@ -305,7 +305,7 @@ if run_button:
  
             plt.legend()
 
-            if r2_squared_long >= score_long2:
+            if r_squared_long >= score_long2:
                 
                 y_lat_pred = c * year_predict + d
                 y_long_pred = a * year_predict + b
