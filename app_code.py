@@ -39,6 +39,9 @@ if run_button:
     st.write(f"DEBUG: Recherche pour {chosen_species_name}")
     with st.spinner("Collecting GBIF data..."):
         chosen_species = species.name_backbone(scientificName=chosen_species_name)
+        st.write("DEBUG - Réponse brute de l'API :")
+        st.json(chosen_species)
+        st.stop() # Arrête tout pour lire le résultat
         taxonkey = chosen_species.get("usageKey")
     
         if not taxonkey:
