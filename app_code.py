@@ -297,7 +297,7 @@ if run_button:
                     with st.container():
                         
                         st.markdown('<div class="folium-border">', unsafe_allow_html=True)
-                        st_folium(m, width=700, height=500, returned_objects[])
+                        st_folium(m, width=700, height=500, returned_objects=[])
                         st.markdown('</div>', unsafe_allow_html=True)
 
         
