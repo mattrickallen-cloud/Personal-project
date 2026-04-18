@@ -282,23 +282,13 @@ if run_button:
                 st.divider()
                 
                 if not df.empty:
-                
                     
-                    st.markdown("""
-                    <style>
-                    .folium-border {
-                         border: 5px solid #29B5E8;
-                        border-radius: 15px;
-                        overflow: hidden;
-                    }
-                      </style>
-                    """, unsafe_allow_html=True)
-            
-                    with st.container():
-                        
-                        st.markdown('<div class="folium-border">', unsafe_allow_html=True)
-                        st_folium(m, width=700, height=500, returned_objects=[])
-                        st.markdown('</div>', unsafe_allow_html=True)
+                    st_folium(m, width=700, height=500, returned_objects=[]).folium-border {
+    border: 2px solid #29B5E8;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+                    
 
         
         with st.sidebar:
