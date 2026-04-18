@@ -305,16 +305,22 @@ if run_button:
  
             plt.legend()
 
-            if r_squared_long >= score_long2:
+            if r_squared_lat >= score_lat2:
                 
                 y_lat_pred = c * year_predict + d
-                y_long_pred = a * year_predict + b
 
             else:
-                
+
                 future_year_lat = np.array([[2030]])
                 future_year_poly_lat = poly_lat.transform(future_year_lat)
                 y_lat_pred = model.predict(future_year_poly_lat)[0]
+
+            if r_squared_long= score_long2:
+                
+                y_long_pred = a * year_predict + b
+
+            else:
+
                 future_year_long = np.array([[2030]])
                 future_year_poly_long = poly_long.transform(future_year_long)
                 y_long_pred = model.predict(future_year_poly_long)[0]
