@@ -284,7 +284,7 @@ if run_button:
             poly_long = PolynomialFeatures(degree=2)
             y2_poly_long = poly_long.fit_transform(y2)
             
-            model.fit(y2_poly_long, lat2)
+            model.fit(y2_poly_long, long2)
             long2_pred = model.predict(y2_poly_long)
             score_long2 = r2_score(long2, long2_pred)
             
