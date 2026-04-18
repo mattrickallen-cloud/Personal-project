@@ -36,8 +36,9 @@ with st.sidebar:
     year_predict = st.number_input("For which coming year do you want to predict the evolution of this population ?")
 
 if run_button:
-    st.write(f"DEBUG: Recherche pour {chosen_species_name}")
+ 
     with st.spinner("Collecting GBIF data..."):
+     
         chosen_species = species.name_backbone(scientificName=chosen_species_name)
      
         if not chosen_species or chosen_species["diagnostics"]["matchType"]=="NONE":
@@ -74,6 +75,7 @@ if run_button:
         df = df[["decimalLatitude","decimalLongitude","year"]]
         
         if df.empty:
+         
             print(f"No or not enough data for {chosen_species_name} in {country_names}.")
             exit()
         
