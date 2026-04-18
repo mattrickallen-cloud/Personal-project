@@ -9,6 +9,9 @@ import streamlit as st
 from streamlit_folium import st_folium
 import branca.colormap as cm
 import matplotlib.colors as mcolors
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score
 
 tab1, tab2, tab3 = st.tabs(["🗺️ Map", "📈 Analysis", "⚙️ Other"])
 
@@ -226,47 +229,94 @@ if run_button:
          
         if len(mean_coord["years"]) > 2:
         
-            y = np.array(mean_coord["years"])
-            lat = np.array(mean_coord["latitude_means"])
-            long = np.array(mean_coord["longitude_means"])
+            y1 = np.array(mean_coord["years"])
+            lat1 = np.array(mean_coord["latitude_means"])
+            long1 = np.array(mean_coord["longitude_means"])
 
             counts = np.array([year_number[yr - year_min] for yr in mean_coord["years"]])
             weights = counts/np.max(counts)
             
-            c, d = np.polyfit(y, lat, 1, w=weights)
-            correlation_matrix_lat = np.corrcoef(y, lat)
+            c, d = np.polyfit(y1, lat1, 1, w=weights)
+            correlation_matrix_lat = np.corrcoef(y1, lat1)
             correlation_xy_lat = correlation_matrix_lat[0, 1]
             r_squared_lat = correlation_xy_lat**2
         
-            plt.figure(2)    
+            plt.figure(2) 
+
+            y2 = np.array(annees).reshape(-1, 1)
+            lat2 = np.array(positions)
+            
+            poly_lat = PolynomialFeatures(degree=2)
+            y2_poly_lat = poly_lat.fit_transform(y2)
+            
+            model = LinearRegression()
+            model.fit(y2_poly_lat, lat2)
+            lat2_pred = model.predict(y2_poly_lat)
+            score_lat2 = r2_score(lat2, lat2_pred)
+
+            if r2_squared_lat >= score_lat2:
+                
+                lat_pred =  c * y1 + d
+
+            else:
+                
+                lat_pred = lat2_pred
             
             plt.plot(
-                    y,            
-                    c * y + d,
+                    y1,            
+                    lat_pred,
                     "b--",
-                    label=f"Linear model, R²={r_squared_lat}"
+                    label=f"Linear model, R²={max(r_squared_lat, score_lat2)}"
                     )
             
             plt.legend()
             
-            a, b = np.polyfit(y, long, 1, w=weights)
-            correlation_matrix_long = np.corrcoef(y, long)
+            a, b = np.polyfit(y1, long1, 1, w=weights)
+            correlation_matrix_long = np.corrcoef(y1, long1)
             correlation_xy_long = correlation_matrix_long[0, 1]
             r_squared_long = correlation_xy_long**2
         
             plt.figure(3)
+
+            long2 = np.array(positions)
+            
+            poly_long = PolynomialFeatures(degree=2)
+            y2_poly_long = poly_long.fit_transform(y2)
+            
+            model.fit(y2_poly_long, lat2)
+            long2_pred = model.predict(y2_poly_long)
+            score_long2 = r2_score(long2, long2_pred)
+            
+            if r2_squared_long >= score_long2:
+                
+                long_pred =  c * y1 + d
+                
+            else:
+                
+                long_pred = long2_pred
             
             plt.plot(
-                    y,
-                    a * y + b,
+                    y1,
+                    long_pred,
                     "b--",
-                    label=f"Linear model, R²={r_squared_long}"
+                    label=f"Linear model, R²={max(r_squared_long, score_long2)}"
                     )
-            
+ 
             plt.legend()
-        
-            y_lat_pred = c * year_predict + d
-            y_long_pred = a * year_predict + b
+
+            if r2_squared_long >= score_long2:
+                
+                y_lat_pred = c * year_predict + d
+                y_long_pred = a * year_predict + b
+
+            else:
+                
+                future_year_lat = np.array([[2030]])
+                future_year_poly_lat = poly_lat.transform(future_year_lat)
+                y_lat_pred = model.predict(future_year_poly_lat)
+                future_year_long = np.array([[2030]])
+                future_year_poly_long = poly.transform(future_year_long)
+                y_long_pred = model.predict(future_year_poly_long)
 
             folium.Marker(
                          location=[y_lat_pred, y_long_pred],
