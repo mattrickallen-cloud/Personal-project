@@ -314,10 +314,10 @@ if run_button:
                 
                 future_year_lat = np.array([[2030]])
                 future_year_poly_lat = poly_lat.transform(future_year_lat)
-                y_lat_pred = model.predict(future_year_poly_lat)
+                y_lat_pred = model.predict(future_year_poly_lat)[0]
                 future_year_long = np.array([[2030]])
                 future_year_poly_long = poly_long.transform(future_year_long)
-                y_long_pred = model.predict(future_year_poly_long)
+                y_long_pred = model.predict(future_year_poly_long)[0]
 
             folium.Marker(
                          location=[y_lat_pred, y_long_pred],
