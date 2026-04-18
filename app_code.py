@@ -276,9 +276,9 @@ if run_button:
             st.pyplot(fig3)
         
         with tab3:
-         
-    st.subheader("Relevant Information")
-    st.write(f"Species : {chosen_species_name}")
-    st.write(f"Prediction year : {year_predict}")
-    st.pyplot(fig4)
-        
+                 
+            st.subheader("Relevant Information")
+            st.write(f"Species : {chosen_species_name}")
+            st.write(f"Prediction year : {year_predict}")
+            st.pyplot(fig4)
+                
