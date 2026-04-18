@@ -53,7 +53,7 @@ if run_button:
       
         if country is None:
         
-           st.error(f"'{country}' not found")
+           st.error("Country not found")
            st.stop()
 
         country_alpha2 = country.alpha_2
