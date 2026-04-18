@@ -284,7 +284,7 @@ if run_button:
                 if not df.empty:
                     
                     st_folium(m, width=700, height=500, returned_objects=[]).folium-border {
-    border: 2px solid #29B5E8;
+    border: 2px solid;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
