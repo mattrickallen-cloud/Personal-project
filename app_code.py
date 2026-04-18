@@ -306,4 +306,19 @@ if run_button:
             st.write(f"Species : {chosen_species_name}")
             st.write(f"Prediction year : {year_predict}")
             st.pyplot(fig4)
-                
+        st.markdown("""
+        <style>
+        .folium-border {
+             border: 5px solid #29B5E8;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+          </style>
+        """, unsafe_allow_html=True)
+
+        with st.container():
+            
+            st.markdown('<div class="folium-border">', unsafe_allow_html=True)
+            st_folium(m, width=700, height=500)
+            st.markdown('</div>', unsafe_allow_html=True)
+                        
