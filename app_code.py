@@ -12,6 +12,23 @@ import matplotlib.colors as mcolors
 
 tab1, tab2, tab3 = st.tabs(["🗺️ Map", "📈 Analysis", "⚙️ Other"])
 
+def set_bg_from_url(url):
+    st.markdown(
+        f"""<style>.stApp {{
+            background-image: url('{url}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+# Exemple avec une image de Lynx hébergée sur le web
+Url = "https://upload.wikimedia.org/wikipedia/commons/e/e6/Lynx_lynx_poe.jpg"
+set_bg_from_url(Url)
+
 #config_species = {
  #   "Chordata":
   #  {"limit": 500,
