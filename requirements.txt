@@ -8,6 +8,4 @@ numpy
 streamlit
 folium
 streamlit_folium
-sklearn.preprocessing
-sklearn.linear_model
-sklearn.metrics
+sklearn
