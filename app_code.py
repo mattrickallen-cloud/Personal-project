@@ -43,7 +43,7 @@ if run_button:
     
         if not taxonkey:
          
-           st.warning(f"'{chosen_species_name}' no found, check spelling.")
+           st.warning(f"'{chosen_species_name}' not found, check spelling.")
            st.stop()
          
         #phylum = chosen_species["classification"][1]["name"]
