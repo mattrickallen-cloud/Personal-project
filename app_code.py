@@ -39,15 +39,12 @@ if run_button:
 
     with st.spinner("Collecting GBIF data..."):
         chosen_species = species.name_backbone(scientificName=chosen_species_name)
-        st.json(chosen_species)
-        if not chosen_species or chosen_species.get('matchType') == 'NONE':
+        taxonkey = data.get("usageKey")
+    
+        if not taxonkey:
          
-           st.warning("Please enter a valid species name.")
+           st.warning(f"Impossible de trouver l'espèce '{chosen_species_name}'. Vérifie l'orthographe.")
            st.stop()
-  
-        else:
-         
-           taxonkey = chosen_species["usage"]["key"]
          
         #phylum = chosen_species["classification"][1]["name"]
         country_list = [country_names]
