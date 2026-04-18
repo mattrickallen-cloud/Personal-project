@@ -39,7 +39,6 @@ if run_button:
     st.write(f"DEBUG: Recherche pour {chosen_species_name}")
     with st.spinner("Collecting GBIF data..."):
         chosen_species = species.name_backbone(scientificName=chosen_species_name)
-        st.json(chosen_species)
      
         if not chosen_species or chosen_species["diagnostics"]["matchType"]=="NONE":
          
@@ -50,12 +49,14 @@ if run_button:
         #phylum = chosen_species["classification"][1]["name"]
         country_list = [country_names]
         results = []
-        country = pycountry.countries.get(name=country_names).alpha_2
+        country = pycountry.countries.get(name=country_names)
       
         if country is NONE:
         
            st.error(f"'{country}' not found")
            st.stop()
+
+        country_alpha2 = country.alpha_2
      
         for offset in range(0, 10000, 500):
         
@@ -64,7 +65,7 @@ if run_button:
                                 hasCoordinate=True,
                                 limit=500,
                                 offset=offset,
-                                country=country,
+                                country=country_alpha2,
                                 )
         
             results.extend(occdata["results"])
