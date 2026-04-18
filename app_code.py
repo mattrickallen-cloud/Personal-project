@@ -39,18 +39,13 @@ if run_button:
     st.write(f"DEBUG: Recherche pour {chosen_species_name}")
     with st.spinner("Collecting GBIF data..."):
         chosen_species = species.name_backbone(scientificName=chosen_species_name)
-        if not chosen_species:
+     
+        if not chosen_species or chosen_species.get('matchType') == 'NONE':
          
            st.warning(f"'{chosen_species_name}' not found, check spelling.")
            st.stop()
          
         taxonkey = chosen_species["usage"].get("key")
-    
-        if not taxonkey:
-         
-           st.warning(f"'{chosen_species_name}' not found, check spelling.")
-           st.stop()
-         
         #phylum = chosen_species["classification"][1]["name"]
         country_list = [country_names]
         results = []
