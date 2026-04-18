@@ -311,7 +311,7 @@ if run_button:
 
             else:
 
-                future_year_lat = np.array([[2030]])
+                future_year_lat = np.array([[year_predict]])
                 future_year_poly_lat = poly_lat.transform(future_year_lat)
                 future_lat_pred = model.predict(future_year_poly_lat)
                 y_lat_pred = future_lat_pred[0]
@@ -322,7 +322,7 @@ if run_button:
 
             else:
 
-                future_year_long = np.array([[2030]])
+                future_year_long = np.array([[year_predict]])
                 future_year_poly_long = poly_long.transform(future_year_long)
                 future_long_pred = model.predict(future_year_poly_long)
                 y_long_pred = future_long_pred[0]
