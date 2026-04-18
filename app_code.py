@@ -26,7 +26,7 @@ def set_bg_from_url(url):
     )
 
 # Exemple avec une image de Lynx hébergée sur le web
-Url = "https://cdn.shopify.com/s/files/1/0657/3100/2634/files/papier-peint-jungle-tropicale-paysage-luxuriant-et-apaisant-d-une-jungle-verdoyante_cc881a83-3304-4770-8005-2901f2cb86b8.png?v=1731421184"
+Url = "https://i0.wp.com/lewiscarlyle.com/wp-content/uploads/2018/06/Garden-of-the-Gods-Colorado-Springs-Panoramic-Sunset-Splendor.jpg?w=1200&ssl=1"
 set_bg_from_url(Url)
 
 #config_species = {
