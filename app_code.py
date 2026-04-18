@@ -315,7 +315,7 @@ if run_button:
                 future_year_poly_lat = poly_lat.transform(future_year_lat)
                 y_lat_pred = model.predict(future_year_poly_lat)[0]
 
-            if r_squared_long= score_long2:
+            if r_squared_long >= score_long2:
                 
                 y_long_pred = a * year_predict + b
 
