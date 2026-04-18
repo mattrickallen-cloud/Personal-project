@@ -30,7 +30,7 @@ run_button = st.button("Run the simulation.")
     # "min_points":5}
     #}
 with st.sidebar:
-    st.header("Settings")
+    st.header("Parameters")
     chosen_species_name = st.text_input("Enter the scientific name of chosen species (ex: Lynx pardinus).")
     country_names = st.text_input("Enter the chosen country of study (ex: Spain).")
     year_predict = st.number_input("For which coming year do you want to predict the evolution of this population ?")
@@ -50,14 +50,14 @@ if run_button:
         #phylum = chosen_species["classification"][1]["name"]
         country_list = [country_names]
         results = []
-        country = pycountry.countries.get(name=country_names).alpha_2
      
-        if not country:
-
+        if not pycountry.countries.get(name=country_names).alpha_2:
+        
            st.error(f"'{country}' not found")
            st.stop()
-     
         
+        country = pycountry.countries.get(name=country_names).alpha_2
+     
         for offset in range(0, 10000, 500):
         
             occdata = occ.search(
