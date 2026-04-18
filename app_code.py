@@ -281,9 +281,9 @@ if run_button:
                 st.subheader("Interactice map")
                 st.divider()
                 
-               if not df.empty:
+                if not df.empty:
                 
-                  st_folium(m, width=700, height=500, returned_objects=[])
+                    st_folium(m, width=700, height=500, returned_objects=[])
 
         
         with st.sidebar:
