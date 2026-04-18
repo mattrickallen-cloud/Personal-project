@@ -11,7 +11,6 @@ import branca.colormap as cm
 import matplotlib.colors as mcolors
 
 tab1, tab2, tab3 = st.tabs(["🗺️ Map", "📈 Analysis", "⚙️ Other"])
-run_button = st.button("Run the simulation.")
 
 #config_species = {
  #   "Chordata":
@@ -35,6 +34,7 @@ with st.sidebar:
     chosen_species_name = st.text_input("Enter the scientific name of chosen species (ex: Lynx pardinus).")
     country_names = st.text_input("Enter the chosen country of study (ex: Spain).")
     year_predict = st.number_input("For which coming year do you want to predict the evolution of this population ?")
+    run_button = st.button("Run the simulation.")
 
 if run_button:
  
@@ -266,7 +266,9 @@ if run_button:
                   st_folium(m, width=700, height=500, returned_objects=[])
 
         
-        st.success("Simulation done !")
+        with st.sidebar:
+        
+            st.success("Simulation done !")
 
 
         with tab2:
