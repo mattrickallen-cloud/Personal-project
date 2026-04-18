@@ -50,13 +50,12 @@ if run_button:
         #phylum = chosen_species["classification"][1]["name"]
         country_list = [country_names]
         results = []
-     
-        if not pycountry.countries.get(name=country_names).alpha_2:
+        country = pycountry.countries.get(name=country_names).alpha_2
+      
+        if country is NONE:
         
            st.error(f"'{country}' not found")
            st.stop()
-        
-        country = pycountry.countries.get(name=country_names).alpha_2
      
         for offset in range(0, 10000, 500):
         
