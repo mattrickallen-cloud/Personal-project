@@ -26,7 +26,7 @@ def set_bg_from_url(url):
     )
 
 # Exemple avec une image de Lynx hébergée sur le web
-Url = "https://www.sylvamap.fr/sylvamap-new/wp-content/uploads/2017/09/fond-foret-sylvamap-768x512.jpg"
+Url = "https://cdn.shopify.com/s/files/1/0657/3100/2634/files/papier-peint-jungle-tropicale-paysage-luxuriant-et-apaisant-d-une-jungle-verdoyante_cc881a83-3304-4770-8005-2901f2cb86b8.png?v=1731421184"
 set_bg_from_url(Url)
 
 #config_species = {
