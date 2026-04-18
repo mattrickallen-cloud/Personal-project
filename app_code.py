@@ -51,7 +51,7 @@ if run_button:
         results = []
         country = pycountry.countries.get(name=country_names)
       
-        if country is NONE:
+        if country is None:
         
            st.error(f"'{country}' not found")
            st.stop()
