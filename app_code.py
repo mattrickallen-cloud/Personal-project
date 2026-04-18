@@ -173,11 +173,12 @@ if run_button:
                                 ).add_to(fg_obs)
         
         history_group = folium.FeatureGroup(name="Means").add_to(m)
+        
         for lon, lat, yr in zip(mean_coord["longitude_means"], mean_coord["latitude_means"], mean_coord["years"]):
          
             folium.Marker(
                           location=[lat, lon],
-                          icon=folium.Icon(color="red", icon="info-sign"),
+                          icon=folium.Icon(color=point_color, icon="info-sign"),
                           popup=f"Mean position in {yr}"
                          ).add_to(history_group)
         
@@ -243,8 +244,8 @@ if run_button:
         
             plt.figure(2) 
 
-            y2 = np.array(annees).reshape(-1, 1)
-            lat2 = np.array(positions)
+            y2 = np.array(mean_coord["years"]).reshape(-1, 1)
+            lat2 = np.array(mean_coord["latitude_means"])
             
             poly_lat = PolynomialFeatures(degree=2)
             y2_poly_lat = poly_lat.fit_transform(y2)
@@ -278,7 +279,7 @@ if run_button:
         
             plt.figure(3)
 
-            long2 = np.array(positions)
+            long2 = np.array(mean_coord["longitude_means"])
             
             poly_long = PolynomialFeatures(degree=2)
             y2_poly_long = poly_long.fit_transform(y2)
