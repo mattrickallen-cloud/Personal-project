@@ -10,6 +10,7 @@ from streamlit_folium import st_folium
 import branca.colormap as cm
 import matplotlib.colors as mcolors
 
+tab1, tab2, tab3 = st.tabs(["📊 Carte", "📈 Statistiques", "⚙️ Détails techniques"])
 run_button = st.button("Run the simulation.")
 
 #config_species = {
@@ -85,6 +86,7 @@ if run_button:
         df = df.groupby('year').filter(lambda x: len(x) >= 5)
         
         if df.empty:
+         
             print(f"No or not enough data for {chosen_species_name} in {country_names}.")
             exit()
         
@@ -100,11 +102,13 @@ if run_button:
                     }
         
         year_number = [0]*((year_max+1)-year_min)
+     
         for year in range(year_min,year_max+1):
         
             df_year = df[df["year"] == year]
         
             if df_year.empty:
+             
                 continue
         
             year_number[year-year_min] = len(df_year)
@@ -130,6 +134,7 @@ if run_button:
         colormap.add_to(m)
         
         fg_obs = folium.FeatureGroup(name="Individual occurences").add_to(m)
+     
         for _, row in df.iterrows():
         
             point_color = colormap(row['year'])
@@ -147,6 +152,7 @@ if run_button:
         
         history_group = folium.FeatureGroup(name="Means").add_to(m)
         for lon, lat, yr in zip(mean_coord["longitude_means"], mean_coord["latitude_means"], mean_coord["years"]):
+         
             folium.Marker(
                           location=[lat, lon],
                           icon=folium.Icon(color="red", icon="info-sign"),
@@ -198,8 +204,6 @@ if run_button:
                 )
         
         plt.legend()
-        
-        st.pyplot(fig4)
          
         if len(mean_coord["years"]) > 2:
         
@@ -226,8 +230,6 @@ if run_button:
             
             plt.legend()
             
-            st.pyplot(fig2)
-            
             a, b = np.polyfit(y, long, 1, w=weights)
             correlation_matrix_long = np.corrcoef(y, long)
             correlation_xy_long = correlation_matrix_long[0, 1]
@@ -243,8 +245,6 @@ if run_button:
                     )
             
             plt.legend()
-            
-            st.pyplot(fig3)
         
             y_lat_pred = c * year_predict + d
             y_long_pred = a * year_predict + b
@@ -257,8 +257,28 @@ if run_button:
         
             plt.legend()
 
-            if not df.empty:
-               st_folium(m, width=700, height=500,returned_objects=[])
+            with tab1:
+             
+               st.subheader("Interactice map")
+             
+               if not df.empty:
+                
+                  st_folium(m, width=700, height=500, returned_objects=[])
+
         
         st.success("Simulation done !")
+
+
+with tab2:
+ 
+    st.subheader("Tendancy Analysis")
+    st.pyplot(fig2)
+    st.pyplot(fig3)
+
+with tab3:
+ 
+    st.subheader("Relevant Information")
+    st.write(f"Species : {chosen_species_name}")
+    st.write(f"Prediction year : {year_predict}")
+    st.pyplot(fig4)
         
