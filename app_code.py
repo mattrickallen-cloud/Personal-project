@@ -36,7 +36,7 @@ with st.sidebar:
     year_predict = st.number_input("For which coming year do you want to predict the evolution of this population ?")
 
 if run_button:
-
+    st.write(f"DEBUG: Recherche pour {chosen_species_name}")
     with st.spinner("Collecting GBIF data..."):
         chosen_species = species.name_backbone(scientificName=chosen_species_name)
         taxonkey = chosen_species.get("usageKey")
