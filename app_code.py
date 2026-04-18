@@ -41,7 +41,7 @@ if run_button:
         chosen_species = species.name_backbone(scientificName=chosen_species_name)
         st.json(chosen_species)
      
-        if not chosen_species or chosen_species.get('matchType') == 'NONE':
+        if not chosen_species or chosen_species["diagnostics"]["matchType":"NONE"]:
          
            st.warning(f"'{chosen_species_name}' not found, check spelling.")
            st.stop()
