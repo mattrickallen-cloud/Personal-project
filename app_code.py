@@ -10,8 +10,8 @@ from streamlit_folium import st_folium
 import branca.colormap as cm
 import matplotlib.colors as mcolors
 
-
 run_button = st.button("Run the simulation.")
+
 #config_species = {
  #   "Chordata":
   #  {"limit": 500,
@@ -33,8 +33,7 @@ with st.sidebar:
     st.header("Settings")
     chosen_species_name = st.text_input("Enter the scientific name of chosen species (ex: Lynx pardinus).")
     country_names = st.text_input("Enter the chosen country of study (ex: Spain).")
-    year_predict = int(st.text_input("For which coming year do you want to predict the evolution of this population ?"))
-    #run_button = st.button("Run the simulation.")
+    year_predict = st.number_input("For which coming year do you want to predict the evolution of this population ?")
 
 if run_button:
 
