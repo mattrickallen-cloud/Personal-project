@@ -53,7 +53,8 @@ if run_button:
      
         if not country:
 
-           st.error(f""{country" not found") 
+           st.error(f"'{country}' not found")
+           st.stop()
      
         
         for offset in range(0, 10000, 500):
