@@ -39,7 +39,7 @@ if run_button:
 
     with st.spinner("Collecting GBIF data..."):
         chosen_species = species.name_backbone(scientificName=chosen_species_name)
-        taxonkey = data.get("usageKey")
+        taxonkey = chosen_species.get("usageKey")
     
         if not taxonkey:
          
