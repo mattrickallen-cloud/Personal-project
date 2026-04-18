@@ -275,6 +275,7 @@ if run_button:
          
             st.subheader("Tendancy Analysis")
             st.pyplot(fig2)
+            st.divider()
             st.pyplot(fig3)
         
         with tab3:
