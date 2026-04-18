@@ -10,7 +10,7 @@ from streamlit_folium import st_folium
 import branca.colormap as cm
 import matplotlib.colors as mcolors
 
-run_button == False
+run_button = False
 
 #config_species = {
  #   "Chordata":
