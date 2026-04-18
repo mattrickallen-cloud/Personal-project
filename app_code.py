@@ -9,9 +9,9 @@ import streamlit as st
 from streamlit_folium import st_folium
 import branca.colormap as cm
 import matplotlib.colors as mcolors
-from scikit-learn.preprocessing import PolynomialFeatures
-from scikit-learn.linear_model import LinearRegression
-from scikit-learn.metrics import r2_score
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score
 
 tab1, tab2, tab3 = st.tabs(["🗺️ Map", "📈 Analysis", "⚙️ Other"])
 
