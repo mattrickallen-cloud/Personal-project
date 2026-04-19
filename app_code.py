@@ -327,6 +327,8 @@ if run_button:
                 future_long_pred = model.predict(future_year_poly_long)
                 y_long_pred = future_long_pred[0]
 
+            st.write(f"DEBUG - Latitude finale pour Folium: {y_lat_pred}")
+            st.write(f"DEBUG - Longitude finale pour Folium: {y_long_pred}")
             folium.Marker(
                          location=[y_lat_pred, y_long_pred],
                          icon=folium.Icon(color="green", icon="star"),
