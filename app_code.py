@@ -250,9 +250,9 @@ if run_button:
             poly_lat = PolynomialFeatures(degree=2)
             y2_poly_lat = poly_lat.fit_transform(y2)
             
-            model = LinearRegression()
-            model.fit(y2_poly_lat, lat2)
-            lat2_pred = model.predict(y2_poly_lat)
+            model_lat = LinearRegression()
+            model_lat.fit(y2_poly_lat, lat2)
+            lat2_pred = model_lat.predict(y2_poly_lat)
             score_lat2 = r2_score(lat2, lat2_pred)
 
             if r_squared_lat >= score_lat2:
@@ -283,9 +283,10 @@ if run_button:
             
             poly_long = PolynomialFeatures(degree=2)
             y2_poly_long = poly_long.fit_transform(y2)
-            
-            model.fit(y2_poly_long, long2)
-            long2_pred = model.predict(y2_poly_long)
+
+            model_long = LinearRegression()
+            model_long.fit(y2_poly_long, long2)
+            long2_pred = model_long.predict(y2_poly_long)
             score_long2 = r2_score(long2, long2_pred)
             
             if r_squared_long >= score_long2:
@@ -313,7 +314,7 @@ if run_button:
 
                 future_year_lat = np.array([[year_predict]])
                 future_year_poly_lat = poly_lat.transform(future_year_lat)
-                future_lat_pred = model.predict(future_year_poly_lat)
+                future_lat_pred = model_lat.predict(future_year_poly_lat)
                 y_lat_pred = future_lat_pred[0]
 
             if r_squared_long >= score_long2:
@@ -324,7 +325,7 @@ if run_button:
 
                 future_year_long = np.array([[year_predict]])
                 future_year_poly_long = poly_long.transform(future_year_long)
-                future_long_pred = model.predict(future_year_poly_long)
+                future_long_pred = model_long.predict(future_year_poly_long)
                 y_long_pred = future_long_pred[0]
 
             st.write(f"DEBUG - Latitude finale pour Folium: {y_lat_pred}")
