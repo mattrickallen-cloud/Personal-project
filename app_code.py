@@ -219,7 +219,7 @@ if run_button:
         plt.plot(
                 mean_coord["years"],
                 mean_coord["latitude_means"],
-                color="red",
+                color="blue",
                 label="Mean latitude evolution"
                 )
         
