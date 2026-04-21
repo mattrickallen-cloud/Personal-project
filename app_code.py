@@ -187,13 +187,13 @@ if run_button:
         for lon, lat, yr in zip(mean_coord["longitude_means"], mean_coord["latitude_means"], mean_coord["years"]):
          
             folium.CircleMarker(
-                                location=[row["decimalLatitude"], row["decimalLongitude"]],
+                                location=[mean_coord["latitude_means"], mean_coord["longitude_means"]],
                                 radius=6,
                                 color="black",
                                 weight=0.5,
                                 fill=True,
                                 fill_color=point_color,
-                                fill_opacity=0.5,
+                                fill_opacity=0.3,
                                 tooltip=f"Mean position in {yr}"
                                 ).add_to(fg_mean)
         
