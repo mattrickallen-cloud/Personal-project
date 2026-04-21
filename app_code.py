@@ -99,8 +99,7 @@ if run_button:
         
         if df.empty:
          
-            print(f"No or not enough data for {chosen_species_name} in {country_names}.")
-            exit()
+            st.error(f"Not enough not data for '{chosen_species}' in '{country}'.)
         
         df = df.drop_duplicates(subset=["decimalLatitude", "decimalLongitude"])
         df = df.dropna(subset=["decimalLatitude", "decimalLongitude"])
