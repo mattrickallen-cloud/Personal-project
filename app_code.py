@@ -60,7 +60,7 @@ with st.sidebar:
 
 if run_button:
  
-    with st.spinner("Collecting GBIF data..."):
+    with st.spinner("Collecting data..."):
      
         chosen_species = species.name_backbone(scientificName=chosen_species_name)
      
