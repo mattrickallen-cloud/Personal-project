@@ -182,15 +182,20 @@ if run_button:
                                 tooltip=f"Year : {int(row['year'])}"
                                 ).add_to(fg_obs)
         
-        history_group = folium.FeatureGroup(name="Means").add_to(m)
+        fg_mean = folium.FeatureGroup(name="Means").add_to(m)
         
         for lon, lat, yr in zip(mean_coord["longitude_means"], mean_coord["latitude_means"], mean_coord["years"]):
          
-            folium.Marker(
-                          location=[lat, lon],
-                          icon=folium.Icon(color=point_color, icon="info-sign"),
-                          popup=f"Mean position in {yr}"
-                         ).add_to(history_group)
+            folium.CircleMarker(
+                          location=[row["decimalLatitude"], row["decimalLongitude"]],
+                                radius=10,
+                                color="black",
+                                weight=0.5,
+                                fill=True,
+                                fill_color=point_color,
+                                fill_opacity=0.9,
+                                tooltip=f"Year : {int(row['year'])}"
+                                ).add_to(fg_mean)
         
         fg_traj = folium.FeatureGroup(name="Mean trajectory").add_to(m)
         points_trajectoire = list(zip(mean_coord["latitude_means"], mean_coord["longitude_means"]))
