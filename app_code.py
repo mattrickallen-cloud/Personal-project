@@ -96,7 +96,7 @@ if run_button:
         
         df = pd.DataFrame(results)
         
-        if not(df["decimalLatitude"] and df["decimalLongitude"] and df["year"]):
+        if not(column in df.columns for column in ["decimalLatitude","decimalLongitude","year"]):
 
             st.error(f"Not enough not data for '{chosen_species}' in '{country}'.")
             st.stop()
@@ -112,6 +112,10 @@ if run_button:
         df = df.dropna(subset=["decimalLatitude", "decimalLongitude"])
         df = df[(df["year"] >= 1500) & (df["year"] <= 2026)]
         df = df.groupby('year').filter(lambda x: len(x) >= 5)
+
+        if df[["decimalLatitude","decimalLongitude","year"]].isnull().any().any():
+            
+            st.warning("There were no occurences in one or more years.")
         
         if df.empty:
          
