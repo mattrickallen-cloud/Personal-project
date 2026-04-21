@@ -187,7 +187,7 @@ if run_button:
         for lon, lat, yr in zip(mean_coord["longitude_means"], mean_coord["latitude_means"], mean_coord["years"]):
          
             folium.CircleMarker(
-                                location=[mean_coord["latitude_means"], mean_coord["longitude_means"]],
+                                location=[lat, lon],
                                 radius=6,
                                 color="black",
                                 weight=0.5,
