@@ -98,14 +98,14 @@ if run_button:
         
         if not all(column in df.columns for column in ["decimalLatitude","decimalLongitude","year"]):
 
-            st.error(f"Not enough not data for '{chosen_species}' in '{country}'.")
+            st.error(f"Not enough not data for '{chosen_species_name}' in '{country_names}'.")
             st.stop()
             
         df = df[["decimalLatitude","decimalLongitude","year"]]
         
         if df.empty:
          
-            st.error(f"Not enough not data for '{chosen_species}' in '{country}'.")
+            st.error(f"Not enough not data for '{chosen_species_name}' in '{country_names}'.")
             st.stop()
         
         df = df.drop_duplicates(subset=["decimalLatitude", "decimalLongitude"])
