@@ -185,7 +185,9 @@ if run_button:
         fg_mean = folium.FeatureGroup(name="Means").add_to(m)
         
         for lon, lat, yr in zip(mean_coord["longitude_means"], mean_coord["latitude_means"], mean_coord["years"]):
-         
+
+            point_color = colormap(yr)
+            
             folium.CircleMarker(
                                 location=[lat, lon],
                                 radius=6,
