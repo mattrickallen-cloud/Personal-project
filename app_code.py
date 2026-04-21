@@ -96,7 +96,7 @@ if run_button:
         
         df = pd.DataFrame(results)
         
-        if not(column in df.columns for column in ["decimalLatitude","decimalLongitude","year"]):
+        if not all(column in df.columns for column in ["decimalLatitude","decimalLongitude","year"]):
 
             st.error(f"Not enough not data for '{chosen_species}' in '{country}'.")
             st.stop()
