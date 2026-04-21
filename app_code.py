@@ -191,11 +191,11 @@ if run_button:
             folium.CircleMarker(
                                 location=[lat, lon],
                                 radius=6,
-                                color="black",
-                                weight=0.5,
+                                color=point_color,
+                                weight=0.7,
                                 fill=True,
                                 fill_color=point_color,
-                                fill_opacity=0.3,
+                                fill_opacity=0.9,
                                 tooltip=f"Mean position in {yr}"
                                 ).add_to(fg_mean)
         
