@@ -277,7 +277,7 @@ if run_button:
                     y1,            
                     lat_pred,
                     "b--",
-                    label=f"Linear model, R²={max(r_squared_lat, score_lat2)}"
+                    label=f"Predictive model, R²={max(r_squared_lat, score_lat2)}"
                     )
             
             plt.legend()
@@ -311,7 +311,7 @@ if run_button:
                     y1,
                     long_pred,
                     "b--",
-                    label=f"Linear model, R²={max(r_squared_long, score_long2)}"
+                    label=f"Predictive model, R²={max(r_squared_long, score_long2)}"
                     )
  
             plt.legend()
