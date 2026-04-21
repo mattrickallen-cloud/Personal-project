@@ -95,6 +95,12 @@ if run_button:
             results.extend(occdata["results"])
         
         df = pd.DataFrame(results)
+        
+        if not(df["decimalLatitude"] and df["decimalLongitude"] and df["year"]):
+
+            st.error(f"Not enough not data for '{chosen_species}' in '{country}'.")
+            st.stop()
+            
         df = df[["decimalLatitude","decimalLongitude","year"]]
         
         if df.empty:
