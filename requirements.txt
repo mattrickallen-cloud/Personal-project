@@ -9,3 +9,4 @@ streamlit
 folium
 streamlit_folium
 scikit-learn
+rasterio
