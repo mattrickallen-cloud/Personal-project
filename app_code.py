@@ -14,6 +14,8 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 import rasterio
 
+@st.cache_data
+
 tab1, tab2, tab3 = st.tabs(["🗺️ Map", "📈 Analysis", "⚙️ Other"])
 
 def set_bg_from_url(url):
