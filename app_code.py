@@ -12,6 +12,7 @@ import matplotlib.colors as mcolors
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
+import rasterio
 
 tab1, tab2, tab3 = st.tabs(["🗺️ Map", "📈 Analysis", "⚙️ Other"])
 
