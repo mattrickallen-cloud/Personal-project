@@ -54,7 +54,7 @@ with st.sidebar:
     st.divider()
     chosen_species_name = st.text_input("Enter the scientific name of chosen species (ex: Lynx pardinus).")
     country_names = st.text_input("Enter the chosen country of study (ex: Spain).")
-    year_predict = st.number_input("For which coming year do you want to predict the evolution of this population (ex: 2030)?")
+    year_predict = st.number_input("For which coming year do you want to predict the position for this population (ex: 2030)?")
     st.divider()
     run_button = st.button("Run the simulation.")
 
