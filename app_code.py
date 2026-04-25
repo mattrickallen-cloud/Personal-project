@@ -13,6 +13,7 @@ from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 import rasterio
+from geopy.geocoders import Nominatim
 
 #@st.cache_data
 
