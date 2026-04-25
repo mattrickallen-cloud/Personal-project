@@ -12,8 +12,8 @@ import matplotlib.colors as mcolors
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
-import rasterio
 from geopy.geocoders import Nominatim
+import requests
 
 #@st.cache_data
 
@@ -35,6 +35,25 @@ def set_bg_from_url(url):
 # Exemple avec une image de Lynx hébergée sur le web
 Url = "https://images.pexels.com/photos/13641027/pexels-photo-13641027.jpeg"
 set_bg_from_url(Url)
+
+def get_climate_data(lat, lon, start_date, end_date,timezone):
+    # URL de l'API Archive pour des données historiques
+    url_meteo = "https://archive-api.open-meteo.com/v1/archive"
+    
+    params = {
+        "latitude": lat,
+        "longitude": lon,
+        "start_date": start_date,
+        "end_date": end_date,
+        "daily": "temperature_2m_mean",
+        "timezone": auto
+    }
+    
+    response = requests.get(url_meteo, params=params)
+    data = response.json()
+    
+    df_meteo = pd.DataFrame(data["daily"])
+    return df_meteo
 
 #config_species = {
  #   "Chordata":
