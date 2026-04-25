@@ -77,7 +77,7 @@ if run_button:
         #phylum = chosen_species["classification"][1]["name"]
         country_list = [country_names]
         geolocator = Nominatim(user_agent="mon_app_bioclim")
-        country_location = geolocator.geocode(country_name)
+        country_location = geolocator.geocode(country_names)
         results = []
         country = pycountry.countries.get(name=country_names)
       
