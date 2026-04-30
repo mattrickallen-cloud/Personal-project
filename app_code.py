@@ -36,7 +36,7 @@ def set_bg_from_url(url):
 Url = "https://images.pexels.com/photos/13641027/pexels-photo-13641027.jpeg"
 set_bg_from_url(Url)
 
-def get_climate_data(lat, lon, start_date, end_date,timezone):
+"""def get_climate_data(lat, lon, start_date, end_date,timezone):
     # URL de l'API Archive pour des données historiques
     url_meteo = "https://archive-api.open-meteo.com/v1/archive"
     
@@ -53,7 +53,7 @@ def get_climate_data(lat, lon, start_date, end_date,timezone):
     data = response.json()
     
     df_meteo = pd.DataFrame(data["daily"])
-    return df_meteo
+    return df_meteo"""
 
 #config_species = {
  #   "Chordata":
