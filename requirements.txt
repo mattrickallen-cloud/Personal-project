@@ -12,4 +12,4 @@ scikit-learn
 rasterio
 geopy
 requests
-movepy
+movekit
